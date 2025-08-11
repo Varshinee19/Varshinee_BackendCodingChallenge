@@ -14,5 +14,6 @@ public interface IPlayerService {
 	public List<Player> getAll();
 	public Player getById(Integer playerID)throws PlayerNotFoundException;
 	public String deletePlayer(Integer playerId);
+	List<Player> displayPlayer();
 
 }

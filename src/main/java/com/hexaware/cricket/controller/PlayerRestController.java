@@ -17,13 +17,15 @@ import com.hexaware.cricket.entity.Player;
 import com.hexaware.cricket.exception.PlayerNotFoundException;
 import com.hexaware.cricket.service.IPlayerService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/player")
 public class PlayerRestController {
 	@Autowired
 	IPlayerService service;
 	@PostMapping("/add")
-	public Player addPlayer(@RequestBody PlayerDto dto) {
+	public Player addPlayer(@Valid @RequestBody PlayerDto dto) {
 		return service.addPlayer(dto);
 	}
 	@PutMapping("/update/{playerId}")
@@ -38,6 +40,10 @@ public class PlayerRestController {
 	@GetMapping("/getById/{playerId}")
 	public Player getById(@PathVariable Integer playerId) throws PlayerNotFoundException {
 		return service.getById(playerId);
+	}
+	@GetMapping("/display")
+	List<Player> displayPlayer(){
+		return service.displayPlayer();
 	}
 	@DeleteMapping("delete/{playerId}")
 	public String deletePlayer(@PathVariable Integer playerId) {

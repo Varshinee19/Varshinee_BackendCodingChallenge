@@ -61,4 +61,10 @@ public class PlayerServiceImpl implements IPlayerService {
 		return "Deleted successfully";
 	}
 
+	@Override
+	public List<Player> displayPlayer() {
+		// TODO Auto-generated method stub
+		return repo.displayPlayer();
+	}
+
 }
